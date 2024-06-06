@@ -7,7 +7,7 @@ public class Televisore {
     private boolean stato;
     private int volume;
     private boolean modalitàHotel;
-    private String[] elencoCanali;
+    private Canale[] elencoCanali;		//array di oggetti
     private int canaleCorrente;
 
     public Televisore(String marca, String modello, int nrPollici) throws Exception {
@@ -30,7 +30,19 @@ public class Televisore {
         this.stato = false;
         this.volume = 0;
         this.modalitàHotel = modalitàHotel;
-        this.elencoCanali = new String[]{"RAI 1", "RAI 2", "RAI 3", "Rete 4", "Canale 5", "Italia 1", "La 7", "Canale 8", "Canale 9", "Telelombardia"};
+        this.elencoCanali 
+        	= new Canale[]{
+        		new Canale("RAI 1", 100), 
+        		new Canale("RAI 2", 120), 
+        		new Canale("RAI 3", 135),
+        		new Canale("Rete 4", 160),
+        		new Canale("Canale 5", 180),
+        		new Canale("Italia 1", 219),
+        		new Canale("La 7", 232),				//qui la potenza del segnale è random
+        		new Canale("Canale 8", 324, 80),		//qui indico io la potenza del segnale
+        		new Canale("Il 9", 532, 80),
+        		new Canale("Telelombardia", 650, 80),
+        		};
         this.canaleCorrente = 0;
     }
 
@@ -72,7 +84,7 @@ public class Televisore {
 
     public String mostraCanale() {
     	if (stato==true) 	//solo a tv accesa
-    		return "Stai guardando il canale " + elencoCanali[canaleCorrente];
+    		return "Stai guardando il canale " + elencoCanali[canaleCorrente].getNome();
     	else
     		return "";
         
@@ -80,7 +92,7 @@ public class Televisore {
 
     public void visualizzaElencoCanali() {
     	if (stato==true) 	//solo a tv accesa
-	        for (String canale : elencoCanali) {
+	        for (Canale canale : elencoCanali) {
 	            System.out.println(canale);
 	        }
     }
