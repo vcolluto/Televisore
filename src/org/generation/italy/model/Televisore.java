@@ -1,12 +1,12 @@
 package org.generation.italy.model;
 
 public class Televisore {
-	private String marca;
-    private String modello;
-    private int nrPollici;
-    private boolean stato;
-    private int volume;
-    private boolean modalitàHotel;
+	private String marca;			//non cambia dopo aver creato l'oggetto => inizializzo nel costruttore (non faccio il setter)
+    private String modello;			//non cambia dopo aver creato l'oggetto	=> inizializzo nel costruttore (non faccio il setter)
+    private int nrPollici;			//non cambia dopo aver creato l'oggetto
+    private boolean stato;			//può cambiare dopo aver creato l'oggetto  => inizializzo nel costruttore (posso fare il setter o un metodo pubblico che consente la modifica)
+    private int volume;				//può cambiare dopo aver creato l'oggetto
+    private boolean modalitàHotel;	//può cambiare dopo aver creato l'oggetto
     private Canale[] elencoCanali;		//array di oggetti
     private int canaleCorrente;
 
@@ -139,4 +139,10 @@ public class Televisore {
         		"\nStato: " + (stato?"acceso":"spento") + ", Volume: " + volume + ", Modalità: " + 
         		(modalitàHotel?"hotel":"normale") + ", Canale Corrente: " + canaleCorrente;
     }
+
+	public Canale[] getElencoCanali() {
+		return elencoCanali;
+	}
+    
+    
 }

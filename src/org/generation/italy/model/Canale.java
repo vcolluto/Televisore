@@ -1,11 +1,13 @@
 package org.generation.italy.model;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 public class Canale {
 	private String nome;
 	private int frequenza;
 	private int potenzaSegnale;		//da 0 a 100
+	private LocalDate dataUltimaRicezione;
 	
 	
 	public Canale(String nome, int frequenza, int potenzaSegnale) throws Exception {		//valori iniziali (creo l'oggetto). Ha senso creare l'oggetto con valori non validi? Sì => valori predefiniti; No => genero un'eccezione 
@@ -21,7 +23,13 @@ public class Canale {
 		if (potenzaSegnale>=0 && potenzaSegnale<=100)
 			this.potenzaSegnale = potenzaSegnale;
 		else
-			throw new Exception("potenza segnale non valida");		
+			throw new Exception("potenza segnale non valida");	
+		
+		Random r=new Random();		//chiamo il costruttore della classe Random
+		
+		//la data di ultima ricezione è la data attuale - un numero di giorni casuale
+		int giorni=r.nextInt(10);
+		this.dataUltimaRicezione=LocalDate.now().minusDays(giorni);
 	}
 	
 	public Canale(String nome, int frequenza) throws Exception {		//valori iniziali (creo l'oggetto). Ha senso creare l'oggetto con valori non validi? Sì => valori predefiniti; No => genero un'eccezione 
@@ -63,6 +71,11 @@ public class Canale {
 		return ris;
 		
 	}
+
+	public LocalDate getDataUltimaRicezione() {
+		return dataUltimaRicezione;
+	}
+	
 	
 	
 

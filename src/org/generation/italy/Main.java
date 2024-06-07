@@ -45,6 +45,8 @@ public class Main {
 					boolean modalitàHotel = Boolean.parseBoolean(sc.nextLine());						
 				
 					televisore = new Televisore(marca, modello, nrPollici, modalitàHotel);
+					
+					
 					System.out.println("Televisore creato.");
 				} catch(Exception e) {
 					System.out.println("Dati non corretti, televisore non creato!");
@@ -98,7 +100,20 @@ public class Main {
 				break;
 			case "8":
 				if (televisore != null) {
-					televisore.visualizzaElencoCanali();
+					//televisore.visualizzaElencoCanali();
+					//esempio di utilizzo della "dotted notation": il "." consente di accedere agli oggetti interni 
+					for(int i=0;i<televisore.getElencoCanali().length;i++) {
+						System.out.println(televisore.getElencoCanali()[i].getNome() + 
+								" frequenza: "+televisore.getElencoCanali()[i].getFrequenza()+
+								" segnale: "+televisore.getElencoCanali()[i].getPotenzaSegnale()+
+								" data ultima ricezione: "+
+								televisore.getElencoCanali()[i].getDataUltimaRicezione().getDayOfMonth() + "/"+
+								televisore.getElencoCanali()[i].getDataUltimaRicezione().getMonthValue()+ "/"+ 
+								televisore.getElencoCanali()[i].getDataUltimaRicezione().getYear());
+//								telev		arraycanali	   canale		localdate			int					
+						
+					}
+						
 				} else
 					System.out.println("Creare prima il televisore!");
 				break;
